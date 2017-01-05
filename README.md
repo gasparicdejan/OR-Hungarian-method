@@ -1,3 +1,1 @@
 # Operacijske raziskave
-
-Avtorji: ...
