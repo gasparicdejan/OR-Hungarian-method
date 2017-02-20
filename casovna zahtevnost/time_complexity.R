@@ -21,7 +21,7 @@ podatki <- data_frame(n = rep(velikost,2), cas = c(casMM,casILP),
 grafMM <- ggplot(podatki, aes(x=n, y=cas, colour=Algoritem)) +
   geom_point() + geom_line() + 
   xlab("Velikost matrike (nxn)")+
-  ylab("Čas (v sekundah)") + 
+  ylab("Cas (v sekundah)") + 
   ggtitle("Casovna zahtevnost algoritmov")+
   theme(plot.title = element_text(hjust = 0.5))+
   theme_bw()
