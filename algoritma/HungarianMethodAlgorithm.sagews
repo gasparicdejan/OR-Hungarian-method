@@ -121,7 +121,7 @@ def madzarska_metoda(B):
     ly = dict() #vrednosti vozlisc iz mnozice Y so ly
     M = dict() # M je prirejanje v grafu G
 
-    #v naslednji zanki bomo izvedli zacetno oznacevanje, in sicer: lx je enak maximalni vrednosti utezi v posamezni vrstici, ly je pa enak 0 za vsako vozlisce (vedno velja: lx+ly>=w(x,y)), M je pa zacetno prirejanje (na zacetku ni           nobenega y v prirejanju)
+    #v naslednji zanki bomo izvedli zacetno oznacevanje, in sicer: lx je enak maximalni vrednosti utezi v posamezni vrstici, ly je pa enak 0 za vsako vozlisce (vedno velja: lx+ly>=w(x,y)), M je pa zacetno prirejanje (na zacetku ni nobenega y v prirejanju)
     for i in range(n):
         d = tuple(A[i,:])
         lx[i] = max(d[0])
@@ -171,41 +171,6 @@ def madzarska_metoda(B):
 #     k = 100
 #     A = Matrix([[(int(random()*(k-h+1))+h) for j in range(n)] for i in range(n)])
 #     %timeit(repeat=10, seconds=True) madzarska_metoda(A)
-
-
-
-
-
-# SAGE ALGORITEM (malo posodobljeni):
-# iskanje najcenejsega popolnega prirejanja v polnem dvodelnem grafu G=(V,E) (V=X∪Y in X∩Y=∅ ter E⊆X×Y):
-# #
-# def sage_matching(B):
-#     n = B.nrows()
-#     G = Graph()
-#     najvecje = max(max(r) for r in B) #potrebujemo najvecji element, kajti '.matching()' metoda ne dela za matrike, ki imajo negativne elemente.
-#     for i in range(n):
-#         for j in range(n):
-#             G.add_edge("x"+str(i),"y"+str(j), najvecje - B[i,j]) #vse elemente matrike povecamo, da so nenegativni
-#     prirejanje = G.matching() #funkcija izracuna najvecje prirejanje grafa G
-#     prirejanje = [(u, v, najvecje - t) for u, v, t in prirejanje] #teze popravimo tako, da dobimo prvotne teze nazaj (tako da bomo imeli najmanjse prirejanje)
-#     #vrnemo najcenejse prirejanje grafa G in njegovo tezo:
-#     return (prirejanje, sum(t for u, v, t in prirejanje))
-#
-#
-## Resitev Madzarske metode s prirejeno funkcijo 'G.matching()', za matriko A velikosti nxn, kjer so elementi celostevilski iz intervala [h,k]:
-# n= 10
-# h= 0
-# k= 100
-# A = Matrix([[(int(random()*(k-h+1))+h) for j in range(n)] for i in range(n)])
-# sage_matching(A)
-
-
-## Časi resevanja Madzarske metode s prirejeno funkcijo 'G.matching()', ko povecujemo n (10,20,...,200), kjer 10x ponovimo izvedbo ter vzamemo povprecen cas:
-# for n in range(10,201,10):
-#     h = 0
-#     k = 100
-#     A = Matrix([[(int(random()*(k-h+1))+h) for j in range(n)] for i in range(n)])
-#     %timeit(repeat=10, seconds=True) sage_ma(A)
 
 
 
