@@ -14,7 +14,7 @@ def MinWeightedMatching(A):
     teza = p.solve()
     prirejanje = p.get_values(x)
 
-    #v resitev dodamo tiste x[i,j], ki so enaki 1 (torej imamo noter pare (i,j) kar pomeni, da je povezava i-j v prirejanju):
+    #v resitev dodamo samo tiste povezave, za katere je vrednost enaka 1 (torej ko gremo s for zanko čez prirejanje.items(), je i indeks (torej povezava) in j vrednost (torej 0 ali 1):
     resitev = [i for i, j in prirejanje.items() if j == 1]
     return(resitev, teza)
 
