@@ -8,8 +8,8 @@ def MinWeightedMatching(A):
 
     p.set_objective(sum(sum(A[i, j]*x[i, j] for j in range(n)) for i in range(n))) #minimiziramo tezo prirejanja
     for i in range(n):
-        p.add_constraint(sum(x[i, j] for j in range(n)) == 1) #vsako vozlisce iz X ima natanko enega soseda v Y (v vsakem stolpcu je natanko en x[i,j] = 1)
-        p.add_constraint(sum(x[j, i] for j in range(n)) == 1) #vsako vozlisce iz Y ima natanko enega soseda v X (v vsaki vrstici je natanko en x[i,j] = 1)
+        p.add_constraint(sum(x[i, j] for j in range(n)) == 1) #vsako vozlisce iz X ima natanko enega soseda v Y (v vsaki vrstici je natanko en x[i,j] = 1)
+        p.add_constraint(sum(x[j, i] for j in range(n)) == 1) #vsako vozlisce iz Y ima natanko enega soseda v X (v vsakem stolpcu je natanko en x[i,j] = 1)
 
     teza = p.solve()
     prirejanje = p.get_values(x)
